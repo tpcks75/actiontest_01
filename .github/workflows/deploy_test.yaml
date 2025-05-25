@@ -29,6 +29,8 @@ jobs:
              fi
             cd ~/actiontest_01 
             git pull origin main
+             # 강제로 이름 중복 컨테이너 제거
+            docker rm -f streamlit-app || true
             docker-compose down
             docker-compose up -d --build
           EOF
