@@ -31,7 +31,7 @@ jobs:
             # 이미 디렉토리가 존재하는 경우 pull로 업데이트
             git pull origin main
             # 빌드 시각 기록
-            echo "$(date '+%Y-%m-%d %H:%M:%S') - Build Triggered" >> build.log
+            echo "$(TZ=Asia/Seoul date '+%Y-%m-%d %H:%M:%S') - Build Triggered" >> build.log
 
              # 강제로 이름 중복 컨테이너 제거
             docker rm -f streamlit-app || true
