@@ -34,7 +34,7 @@ jobs:
 
       - name: Deploy to EC2
         run: |
-        # SSH session connection to the EC2 instance
+         # SSH session connection to the EC2 instance
           ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ubuntu@15.164.146.31 "
             if [ ! -d ~/actiontest_01 ]; then
              # 기존 디렉토리 존재여부 확인 후 git clone
