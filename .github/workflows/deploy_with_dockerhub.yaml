@@ -7,7 +7,7 @@ on:
 
 jobs:
   build-and-deploy:
-    runs-on: ubuntu-latest  # GitHub에서 제공하는 Ubuntu 환경에서 실행
+    runs-on: ubuntu-latest  # GitHub Actions에서 실행되는 가상머신(Runner)으로 Ubuntu 환경에서 실행되며 임시가상클라우드를 제공, docker build, push 등 가능
 
     steps:
       # 1. 현재 레포지토리 소스를 체크아웃
@@ -45,9 +45,9 @@ jobs:
           ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ubuntu@15.164.146.31 "
              # 빌드 시각 기록
             echo \"$(TZ=Asia/Seoul date '+%Y-%m-%d %H:%M:%S') - Build Triggered\" >> build.log &&
-            docker rm -f streamlit-app || true  # 기존 컨테이너 제거 (있다면)
-            docker-compose down &&
-            docker-compose up -d
-            "
+            docker rm -f streamlit-app || true &&
+            docker pull tpcks75/goathub:latest &&
+            docker run -d --name streamlit-app -p 80:8501 tpcks75/goathub:latest
+          "
 
       
