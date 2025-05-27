@@ -13,7 +13,7 @@ on:
 #      - closed
 #    branches:
 #      - main
-
+#
 jobs:
   deploy:
     #PR main에 merge시 동작 - closed는 merge rejected도 포함하므로 해당 옵션 추가가
