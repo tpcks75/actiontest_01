@@ -3,7 +3,8 @@ name: Build and Deploy to EC2
 # main 브랜치에 push될 때 실행됨
 on:
   push:
-    branches: [main]
+    branches:
+      - main
 
 jobs:
   build-and-deploy:
