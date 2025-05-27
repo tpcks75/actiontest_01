@@ -44,11 +44,11 @@ jobs:
       - name: Deploy to EC2
         run: |
           ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ubuntu@15.164.146.31 "
-             # 빌드 시각 기록
-            echo \"$(TZ=Asia/Seoul date '+%Y-%m-%d %H:%M:%S') - Build Triggered\" >> build.log &&
             docker rm -f streamlit-app || true &&
             docker pull sechankim/actiontest_01:latest &&
             docker run -d --name streamlit-app -p 127.0.0.1:8501:8501 sechankim/actiontest_01:latest
+             # 빌드 시각 기록
+            echo \"$(TZ=Asia/Seoul date '+%Y-%m-%d %H:%M:%S') - Build Triggered\" >> build.log &&
           "
 
       
