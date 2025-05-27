@@ -23,7 +23,7 @@ jobs:
 
       # 3. DockerHub 로그인
       - name: Login to DockerHub
-        run: echo "${{ secrets.DOCKERHUB_PASSWD }}" | docker login -u ${{ secrets.DOCKERHUB_NAME }} --password-stdin
+        run: echo "${{ secrets.DOCKER_PASSWD }}" | docker login -u ${{ secrets.DOCKER_NAME }} --password-stdin
 
       # 4. Docker 이미지 빌드 및 DockerHub에 push
       - name: Build and push image
