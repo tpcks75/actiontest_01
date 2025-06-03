@@ -47,8 +47,9 @@ jobs:
         run: |
           ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ubuntu@15.164.146.31 "
             cd goathub_check02
-            docker compose down
-            docker compose pull
-            docker compose up -d
+            docker rmi -f sechankim/actiontest_01:latest || true
+            docker rm -f streamlit-app || true
+            docker pull sechankim/actiontest_01:latest
+            docker run -d --name streamlit-app -p 127.0.0.1:8501:8501 sechankim/actiontest_01:latest
             echo "$(TZ=Asia/Seoul date '+%Y-%m-%d %H:%M:%S') - Build Triggered" >> ~/goathub_check02/build.log
             "
